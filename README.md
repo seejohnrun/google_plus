@@ -1,4 +1,4 @@
-# GooelPlus
+# GooglePlus
 
 ## Installation
 
@@ -16,7 +16,7 @@ GooglePlus.has_api? # false
 
 _None_
 
-### License
+## License
 
 (The MIT License)
 
