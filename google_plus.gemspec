@@ -5,6 +5,7 @@ spec = Gem::Specification.new do |s|
   s.author = 'John Crepezzi'
   s.description = 'Google+ Ruby Gem'
   s.email = 'john.crepezzi@gmail.com'
+  s.add_development_dependency 'rspec', '~> 2.6.0'
   s.add_dependency 'rest-client', '~> 1.6.1'
   s.files = Dir['lib/**/*.rb']
   s.has_rdoc = true
