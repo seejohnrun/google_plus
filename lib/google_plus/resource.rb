@@ -1,4 +1,6 @@
 require 'restclient'
+require File.dirname(__FILE__) + '/errors/request_error'
+require File.dirname(__FILE__) + '/errors/connection_error'
 
 module GooglePlus
 
@@ -10,15 +12,14 @@ module GooglePlus
     # Make a request to an external resource
     def make_request(method, resource, params = {})
       params[:key] = GooglePlus.api_key unless GooglePlus.api_key.nil?
-      params[:access_token] = GooglePlus.access_token unless GooglePlus.access_token.nil?
+      params[:userIp] = params.delete(:user_ip) if params.has_key?(:user_id)
       params[:pp] = '0' # google documentation is incorrect, it says 'prettyPrint'
       begin
         RestClient.get "#{BASE_URI}#{resource}", :params => params
-      rescue RestClient::Forbidden => e
-        # TODO
-        puts e.response.body
+      rescue RestClient::Forbidden, RestClient::BadRequest => e
+        raise GooglePlus::RequestError.new(e)
       rescue SocketError => e
-        throw GooglePlus::ConnectionError
+        raise GooglePlus::ConnectionError.new(e)
       rescue RestClient::ResourceNotFound
         nil
       end

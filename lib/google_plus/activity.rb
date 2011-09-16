@@ -18,6 +18,10 @@ module GooglePlus
       GooglePlus::Cursor.new(self, :get, resource, params)
     end
 
+    def person
+      @person ||= GooglePlus::Person.get(actor.id)
+    end
+
   end
 
 end

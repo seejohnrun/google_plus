@@ -5,7 +5,7 @@ module GooglePlus
     def method_missing(method, *arguments, &block)
       method_s = method.to_s
       if @attributes.has_key?(method_s)
-        @attributes[method_s]
+        GooglePlus::Entity.new @attributes[method_s]
       else
         super
       end

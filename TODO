@@ -1,5 +1,2 @@
-* deep nesting of attributes
-* README
-  * user_ip => userIp, fields, max_results => maxResults (allowed params)
-* gemspec
-* handle error gracefully, and 400
+* fill out requesterror class
+* check names of variables to see what type of casing they use (README)

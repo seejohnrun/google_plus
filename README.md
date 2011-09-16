@@ -9,7 +9,28 @@ gem install google_plus
 ## Methods
 
 ``` ruby
-GooglePlus.has_api? # false
+GooglePlus.has_api? # true
+
+# get a person
+person = GooglePlus::Person.get(123)
+person.full_name
+
+# get their activities (returns a cursor)
+cursor = person.activities_list
+while cursor.next_page
+  cursor.items.count # a bunch of activities
+end
+
+# or an activity by id
+actvitiy = GooglePlus::Activity.get(123)
+activity.person
+
+# you can pass params into the cursor
+cursor = person.activities_list(:user_ip => '...', :max_results => 5)
+
+# you can pass params into a next page
+cursor.items(:max_results => 2) # OR
+cursor.next_page(:max_results => 2)
 ```
 
 ## Dependencies
