@@ -11,6 +11,8 @@ gem install google_plus
 ``` ruby
 GooglePlus.has_api? # true
 
+GooglePlus.api_key = '123'
+
 # get a person
 person = GooglePlus::Person.get(123)
 person.display_name
