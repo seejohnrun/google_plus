@@ -1,39 +1,84 @@
 # GooglePlus
 
+This is a Ruby client library for the [Google+ API](http://developers.google.com/+/api/).
+
 ## Installation
 
 ``` bash
 gem install google_plus
 ```
 
-## Methods
+## Authentication
+
+To make calls to the Google+ API, you have to either authenticate via [OAuth](http://oauth.net/) or provide an API key (which you can get from the Google [APIs Console](https://code.google.com/apis/console#access).  To set your API key and get started, use:
 
 ``` ruby
-GooglePlus.has_api? # true
+GooglePlus.api_key = 'your key'
+```
 
-GooglePlus.api_key = '123'
+That key will then be used on all of your requests.
 
-# get a person
+## People
+
+Getting information about a person is easy, given that you have their Google+ ID:
+
+``` ruby
+person = GooglePlus::Person.get(123)
+```
+
+Accessing attributes of a `GooglePlus::Person` object is straightforward, and to keep things nice, all attributes are converted to snake case (so `person.displayName` becomes `person.display_name`).
+
+``` ruby
 person = GooglePlus::Person.get(123)
 person.display_name
+person.photos.each do |photo|
+  photo.value
+end
+```
 
-# get their activities (returns a cursor)
+You can read more about the fields available for a `Person` in the [Person documentation](http://developers.google.com/+/api/latest/people), or you can use the `attributes` method to get them back as a Hash.
+
+## Activities
+
+Exactly the same as people, you can get activities by ID:
+
+``` ruby
+activity = GooglePlus::Activity.get(123)
+```
+
+And once you have an activity, you can move back to its person using `#person`.
+
+## People do Things
+
+Lastly, you can get a list of activities for a person, which is returned as a `GooglePlus::Cursor`.  You use it like:
+
+``` ruby
+person = GooglePlus::Person.new(123)
 cursor = person.activities_list
 while cursor.next_page
-  cursor.items.count # a bunch of activities
+  cursor.items.count # a batch of activities
 end
-
-# or an activity by id
-actvitiy = GooglePlus::Activity.get(123)
-activity.person
-
-# you can pass params into the cursor
-cursor = person.activities_list(:user_ip => '...', :max_results => 5)
-
-# you can pass params into a next page
-cursor.items(:max_results => 2) # OR
-cursor.next_page(:max_results => 2)
 ```
+
+Or if you just want one page, you can have it:
+
+``` ruby
+person = GooglePlus::Person.new(123)
+activites = person.activities_list.items
+```
+
+You can also set the cursor size at any time using any of these variations:
+
+``` ruby
+# on the cursor
+cursor = person.activities_list(:max_results => 10)
+# or on the page
+cursor.next_page(:max_results => 5)
+```
+
+## Setting options
+
+On any of these calls, you can provide options like `user_ip` listed on [the docs](http://developers.google.com/+/api/).
 
 ## Dependencies
 
