@@ -3,9 +3,10 @@ require File.dirname(__FILE__) + '/entity'
 
 module GooglePlus
 
-  class Activity < Entity
+  class Activity
 
     extend GooglePlus::Resource
+    include GooglePlus::Entity
 
     def self.get(activity_id)
       data = make_request(:get, "activities/#{activity_id}")
@@ -20,6 +21,10 @@ module GooglePlus
 
     def person
       @person ||= GooglePlus::Person.get(actor.id)
+    end
+
+    def initialize(hash)
+      load_hash(hash)
     end
 
   end

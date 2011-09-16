@@ -1,3 +1,4 @@
+require 'bundler/setup'
 require File.dirname(__FILE__) + '/google_plus/resource'
 require File.dirname(__FILE__) + '/google_plus/cursor'
 

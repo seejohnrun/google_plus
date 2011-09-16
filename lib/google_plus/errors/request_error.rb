@@ -1,4 +1,5 @@
 require 'json'
+require File.dirname(__FILE__) + '/../entity'
 
 module GooglePlus
 
@@ -7,8 +8,7 @@ module GooglePlus
     include GooglePlus::Entity
 
     def initialize(e)
-      @attributes = JSON.parse(e.response.body)
-      # TODO alias message
+      load_hash JSON.parse(e.response.body)
     end
 
   end

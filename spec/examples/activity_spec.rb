@@ -4,17 +4,30 @@ describe GooglePlus::Activity do
 
   describe :get do
 
-    describe 'when authenticated' do
+    describe 'with bad credentials' do
 
-      before :each do
-        GooglePlus.api_key = TEST_API_KEY
-      end
-
-      it 'should raise an error with a bad key' do
+      it 'should raise an error' do
         lambda do
           GooglePlus.api_key = '123'
           GooglePlus::Person.get(123)
         end.should raise_error GooglePlus::RequestError
+      end
+
+      it 'should raise an error with a message' do
+        begin
+          GooglePlus.api_key = '123'
+          GooglePlus::Person.get(123)
+        rescue GooglePlus::RequestError => e
+          e.message.length.should be > 0
+        end
+      end
+
+    end
+
+    describe 'when authenticated' do
+
+      before :each do
+        GooglePlus.api_key = TEST_API_KEY
       end
 
       it 'should be able to get a list of activities by person id' do

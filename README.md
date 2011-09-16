@@ -13,7 +13,7 @@ GooglePlus.has_api? # true
 
 # get a person
 person = GooglePlus::Person.get(123)
-person.full_name
+person.display_name
 
 # get their activities (returns a cursor)
 cursor = person.activities_list
@@ -35,7 +35,7 @@ cursor.next_page(:max_results => 2)
 
 ## Dependencies
 
-_None_
+* rest_client
 
 ## License
 

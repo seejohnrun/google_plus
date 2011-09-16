@@ -15,6 +15,12 @@ describe GooglePlus::Person do
         person.should be_a GooglePlus::Person
       end
 
+      it 'should turn camel case into snake case' do
+        person = GooglePlus::Person.get('105735510282572548726')
+        person.should_not respond_to :displayName
+        person.should respond_to :display_name
+      end
+
       it 'should be able to get a list of activites by user' do
         person = GooglePlus::Person.get('105735510282572548726')
         acts = person.list_activities.items
