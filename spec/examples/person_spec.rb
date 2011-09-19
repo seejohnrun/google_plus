@@ -32,10 +32,11 @@ describe GooglePlus::Person do
         person = GooglePlus::Person.get('105735510282572548726')
         acts = person.list_activities
         used = []
-        acts.items(:max_results => 1).count.should == 1
+        acts.next_page(:max_results => 1)
+        acts.items.count.should == 1
         acts.items.each { |a| used << a.id }
-        acts.next_page
-        acts.items(:max_results => 1).count.should == 1
+        acts.next_page(:max_results => 1)
+        acts.items.count.should == 1
         acts.items.each { |a| used.should_not include(a.id) }
       end
 

@@ -11,15 +11,16 @@ module GooglePlus
         # TODO raise error if params are passed here, since they're meaningless
         @items
       else
-        @items = load_page(true, params)
+        @items = load_page(params)
       end
     end
 
     def next_page(params = {})
-      @items = load_page(false, params)
+      @items = load_page(params)
     end
 
     def initialize(klass, method, resource, params)
+      @first_page_loaded = false
       @resource_klass = klass
       @method = method
       @resource = resource
@@ -29,8 +30,9 @@ module GooglePlus
     private
 
     # Load the next page
-    def load_page(force = false, params)
-      if @next_page_token || force
+    def load_page(params)
+      if @next_page_token || !@first_page_loaded
+        @first_page_loaded = true
         ap = params.merge(@base_params)
         ap[:maxResults] = ap.delete(:max_results) if ap.has_key?(:max_results)
         ap[:fields] = ap.delete(:fields) if ap.has_key?(:fields)
