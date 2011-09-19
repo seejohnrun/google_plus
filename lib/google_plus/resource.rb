@@ -12,7 +12,7 @@ module GooglePlus
     # Make a request to an external resource
     def make_request(method, resource, params = {})
       params[:key] = GooglePlus.api_key unless GooglePlus.api_key.nil?
-      params[:userIp] = params.delete(:user_ip) if params.has_key?(:user_id)
+      params[:userIp] = params.delete(:user_ip) if params.has_key?(:user_ip)
       params[:pp] = '0' # google documentation is incorrect, it says 'prettyPrint'
       begin
         RestClient.get "#{BASE_URI}#{resource}", :params => params
