@@ -5,6 +5,7 @@ require File.dirname(__FILE__) + '/google_plus/cursor'
 module GooglePlus
 
   autoload :Activity, File.dirname(__FILE__) + '/google_plus/activity'
+  autoload :Comment, File.dirname(__FILE__) + '/google_plus/comment'
   autoload :Person, File.dirname(__FILE__) + '/google_plus/person'
 
   class << self

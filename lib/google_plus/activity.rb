@@ -19,6 +19,10 @@ module GooglePlus
       GooglePlus::Cursor.new(self, :get, resource, params)
     end
 
+    def list_comments
+      GooglePlus::Comment.for_activity(id) 
+    end
+
     def person
       @person ||= GooglePlus::Person.get(actor.id)
     end

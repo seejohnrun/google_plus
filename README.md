@@ -60,7 +60,7 @@ Lastly, you can get a list of activities for a person, which is returned as a `G
 
 ``` ruby
 person = GooglePlus::Person.new(123)
-cursor = person.activities_list
+cursor = person.list_activities
 while cursor.next_page
   cursor.items.count # a batch of activities
 end
@@ -80,6 +80,26 @@ You can also set the cursor size at any time using any of these variations:
 cursor = person.activities_list(:max_results => 10)
 # or on the page
 cursor.next_page(:max_results => 5)
+```
+
+## Comments
+
+You can get comments for an acitivty, using its ID:
+
+``` ruby
+comment = GooglePlus::Comment.get(123)
+```
+
+Accessing attributes of a `GooglePlus::Comment` object is straightforward, (see: accessing attributes of a `GooglePlus::Person`).  You can find the fields available in the [Comment documentation](https://developers.google.com/+/api/latest/comments/list).
+
+Getting comments for an activity is done just like getting activities for a person:
+
+``` ruby
+activity = GooglePlus::Activity.get(123)
+cursor = activity.list_comments
+while cursor.next_page
+	cursor.items.count # a bunch of comments
+end
 ```
 
 ## Setting options

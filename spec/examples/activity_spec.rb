@@ -2,6 +2,20 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe GooglePlus::Activity do
 
+  describe :list_comments do
+
+    before :each do
+      GooglePlus::api_key = TEST_API_KEY
+    end
+
+    it 'should be able to get comments for an activity' do
+      activity = GooglePlus::Activity.get('z13idx1wmsuxublh404cerzp0r2szrcogpg0k')
+      comments = activity.list_comments
+      comments.items.each { |c| c.should be_a(GooglePlus::Comment) }
+    end
+
+  end
+
   describe :get do
 
     describe 'with bad credentials' do
