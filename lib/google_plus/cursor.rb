@@ -43,8 +43,6 @@ module GooglePlus
           @next_page_token = data['nextPageToken']
           if items = data['items']
             return data['items'].map { |d| @resource_klass.send(:new, d) }
-          else
-            return []
           end
         end
       end

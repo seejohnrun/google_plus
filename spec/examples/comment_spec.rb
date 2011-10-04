@@ -16,7 +16,7 @@ describe GooglePlus::Comment do
 
     it 'should get an empty array when there are no comments' do
       cursor = GooglePlus::Comment.for_activity('z12dh5o4hzzjujpt423wcvtq2k2igvsl0')
-      cursor.items.should be_empty
+      cursor.next_page.should be_nil
     end
 
   end
