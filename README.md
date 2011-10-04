@@ -18,6 +18,12 @@ GooglePlus.api_key = 'your key'
 
 That key will then be used on all of your requests.
 
+If you want to change it for an individual request, you can use a param, like:
+
+``` ruby
+person = GooglePlus::Person.get(123, :key => 'other_key')
+```
+
 ## People
 
 Getting information about a person is easy, given that you have their Google+ ID:
