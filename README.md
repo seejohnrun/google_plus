@@ -102,6 +102,19 @@ while cursor.next_page
 end
 ```
 
+## Searching
+
+You can search for [people](https://developers.google.com/+/api/latest/people/search) or [activities](https://developers.google.com/+/api/latest/activities/search) using the respective `search` methods, which also yield `GooglePlus::Cursor` objects.  Here's an example:
+
+``` ruby
+search = GooglePlus::Person.search('john crepezzi')
+while search.next_page
+  search.each do |p|
+    puts p.display_name
+  end
+end
+```
+
 ## Setting options
 
 On any of these calls, you can provide options like `user_ip` listed on [the docs](http://developers.google.com/+/api/).
