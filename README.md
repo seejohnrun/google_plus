@@ -1,5 +1,7 @@
 # GooglePlus
 
+[![Build Status](https://secure.travis-ci.org/seejohnrun/google_plus.png)](http://travis-ci.org/seejohnrun/google_plus)
+
 This is a Ruby client library for the [Google+ API](http://developers.google.com/+/api/).
 
 ## Installation
