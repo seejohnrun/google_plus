@@ -15,6 +15,7 @@ module GooglePlus
 
     def self.search(query, params = {})
       params[:query] = URI.escape(query)
+      params[:orderBy] = params.delete(:order_by) if params.has_key?(:order_by)
       resource = 'activities'
       GooglePlus::Cursor.new(self, :get, resource, params)
     end
