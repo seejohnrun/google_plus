@@ -2,6 +2,20 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe GooglePlus::Activity do
 
+  describe :search do
+
+    before :each do
+      GooglePlus::api_key = TEST_API_KEY
+    end
+
+    it 'should be able to search something cool' do
+      cursor = GooglePlus::Activity.search('computers')
+      cursor.items.should_not be_empty
+      cursor.items.each { |c| c.should be_a(GooglePlus::Activity) }
+    end
+
+  end
+
   describe :list_comments do
 
     before :each do

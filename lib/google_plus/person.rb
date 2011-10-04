@@ -8,9 +8,15 @@ module GooglePlus
     extend GooglePlus::Resource
     include GooglePlus::Entity
 
-    def self.get(user_id)
-      data = make_request(:get, "people/#{user_id}")
+    def self.get(user_id, params = {})
+      data = make_request(:get, "people/#{user_id}", params)
       Person.new(JSON.parse(data)) if data
+    end
+
+    def self.search(query, params = {})
+      params[:query] = URI.escape(query)
+      resource = 'people'
+      GooglePlus::Cursor.new(self, :get, resource, params)
     end
 
     # get a cursor for activities for this user

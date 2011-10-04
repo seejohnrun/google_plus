@@ -2,6 +2,20 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe GooglePlus::Person do
 
+  describe :search do
+
+    before :each do
+      GooglePlus::api_key = TEST_API_KEY
+    end
+
+    it 'should be able to search for people named john' do
+      cursor = GooglePlus::Person.search 'john'
+      cursor.items.should_not be_empty
+      cursor.items.each { |c| c.should be_a(GooglePlus::Person) }
+    end
+
+  end
+
   describe :get do
 
     describe 'when authenticated' do

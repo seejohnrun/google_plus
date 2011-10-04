@@ -8,8 +8,8 @@ module GooglePlus
     extend GooglePlus::Resource
     include GooglePlus::Entity
 
-    def self.get(comment_id)
-      data = make_request(:get, "comments/#{comment_id}")
+    def self.get(comment_id, params = {})
+      data = make_request(:get, "comments/#{comment_id}", params)
       Comment.new(JSON.parse(data)) if data
     end
 
