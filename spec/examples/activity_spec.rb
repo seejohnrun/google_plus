@@ -16,6 +16,50 @@ describe GooglePlus::Activity do
 
   end
 
+  describe :plusoners do
+
+    before :each do
+      GooglePlus.api_key = TEST_API_KEY
+    end
+      
+    it 'should be able to get a list of plusoners' do
+      activity = GooglePlus::Activity.get('z12bwfehenrus14jq04cfvgowmqhvfzrlfo')
+      plusoners = activity.plusoners
+      plusoners.items.should_not be_empty
+      plusoners.items.each { |r| r.should be_a(GooglePlus::Person) }
+    end
+
+  end
+
+  describe :resharers do
+    
+    before :each do
+      GooglePlus.api_key = TEST_API_KEY
+    end
+     
+    it 'should be able to get a list of resharers' do
+      activity = GooglePlus::Activity.get('z12bwfehenrus14jq04cfvgowmqhvfzrlfo')
+      resharers = activity.resharers
+      resharers.items.should_not be_empty
+      resharers.items.each { |r| r.should be_a(GooglePlus::Person) }
+    end
+
+  end
+
+  describe :list_people do
+    
+    before :each do
+      GooglePlus.api_key = TEST_API_KEY
+    end
+     
+    it 'should get nil for an invalid collection' do 
+      activity = GooglePlus::Activity.get('z12bwfehenrus14jq04cfvgowmqhvfzrlfo')
+      hellos = activity.list_people 'hello'
+      hellos.items.should be_nil
+    end
+
+  end
+
   describe :list_comments do
 
     before :each do

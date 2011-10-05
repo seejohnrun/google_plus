@@ -26,12 +26,31 @@ module GooglePlus
       GooglePlus::Cursor.new(self, :get, resource, params)
     end
 
+    # get the comments for this activity
     def list_comments
       GooglePlus::Comment.for_activity(id) 
     end
 
+    # get the actor of this activity
     def person
       @person ||= GooglePlus::Person.get(actor.id)
+    end
+
+    # list the people of a certain action on this activity
+    # options available at https://developers.google.com/+/api/latest/people/listByActivity
+    def list_people(collection, params = {})
+      resource = "activities/#{id}/people/#{collection}"
+      GooglePlus::Cursor.new(GooglePlus::Person, :get, resource, params)
+    end
+
+    # get a cursor for the plusoners of this activity
+    def plusoners(params = {})
+      list_people(:plusoners)
+    end
+
+    # get a cursor for the resharers of this activity
+    def resharers(params = {})
+      list_people(:resharers)
     end
 
     def initialize(hash)

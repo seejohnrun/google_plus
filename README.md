@@ -84,6 +84,10 @@ cursor = person.activities_list(:max_results => 10)
 cursor.next_page(:max_results => 5)
 ```
 
+## Plusoners and Resharers
+
+You can call `plusoners` and `resharers` on a `GooglePlus::Activity` to get a cursor or people that plus one'd or reshared an activity.
+
 ## Comments
 
 You can get comments for an acitivty, using its ID:
