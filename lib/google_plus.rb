@@ -9,7 +9,7 @@ module GooglePlus
   autoload :Person, File.dirname(__FILE__) + '/google_plus/person'
 
   class << self
-    attr_accessor :api_key
+    attr_accessor :api_key, :access_token
   end
 
   # Return whether or not the we have an API
