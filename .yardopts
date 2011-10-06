@@ -1,0 +1,9 @@
+--readme README.md
+--title 'GooglePlus API Documentation'
+--charset utf-8
+--protected
+--no-private
+--readme README.md
+--hide-void-return
+--markup markdown
+--output-dir ./yardoc

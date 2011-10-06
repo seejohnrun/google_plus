@@ -3,3 +3,5 @@
 *.swp
 Gemfile.lock
 .bundle
+yardoc
+.yardoc

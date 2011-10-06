@@ -19,7 +19,7 @@ module GooglePlus
       @items = load_page(params)
     end
 
-    def initialize(klass, method, resource, params)
+    def initialize(klass, method, resource, params = {})
       @first_page_loaded = false
       @resource_klass = klass
       @method = method
