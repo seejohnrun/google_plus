@@ -8,6 +8,8 @@ This is a Ruby client library for the [Google+ API](http://developers.google.com
 
     gem install google_plus
 
+## [Documentation](http://rdoc.info/gems/google_plus)
+
 ## Authentication
 
 To make calls to the Google+ API, you have to either authenticate via [OAuth](http://oauth.net/) or provide an API key (which you can get from the Google [APIs Console](https://code.google.com/apis/console#access).  To set your API key and get started, use:
