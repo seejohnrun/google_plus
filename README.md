@@ -1,4 +1,4 @@
-# GooglePlus
+# [GooglePlus](http://rubygems.org/gems/google_plus)
 
 [![Build Status](https://secure.travis-ci.org/seejohnrun/google_plus.png)](http://travis-ci.org/seejohnrun/google_plus)
 
@@ -8,7 +8,7 @@ This is a Ruby client library for the [Google+ API](http://developers.google.com
 
     gem install google_plus
 
-## [Documentation](http://rdoc.info/gems/google_plus)
+## [Documentation](http://rdoc.info/gems/google_plus/file/README.md)
 
 ## Authentication
 
