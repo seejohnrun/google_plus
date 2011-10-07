@@ -20,6 +20,14 @@ If you want to change it for an individual request, you can use a param, like:
 
     person = GooglePlus::Person.get(123, :key => 'other_key')
 
+If you want to use [OAuth](http://oauth.net/) for authorization, you can use a method such as [OmniAuth](https://github.com/intridea/omniauth)'s [GoogleOAuth2 Strategy](http://rubydoc.info/gems/oa-oauth/0.3.0/OmniAuth/Strategies/GoogleOAuth2) to get an `access_token`, and then set it using:
+
+    GooglePlus.access_token = 'token'
+
+If you want to set it for an individual request (or series of requests), you can use a param like above:
+
+    person = GooglePlus::Person.get(123, :access_token => 'token')
+
 ## People
 
 Getting information about a person is easy, given that you have their Google+ ID:
