@@ -4,6 +4,8 @@ require File.dirname(__FILE__) + '/errors/connection_error'
 
 module GooglePlus
 
+  # A modular extension for classes that make requests to the
+  # Google Plus API
   module Resource
 
     # Base resource URI - includes trailing slash

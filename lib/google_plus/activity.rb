@@ -3,6 +3,7 @@ require File.dirname(__FILE__) + '/entity'
 
 module GooglePlus
 
+  # An Acitity in Google Plus
   class Activity
 
     extend GooglePlus::Resource

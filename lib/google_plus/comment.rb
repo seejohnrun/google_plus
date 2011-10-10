@@ -3,6 +3,7 @@ require File.dirname(__FILE__) + '/entity'
 
 module GooglePlus
 
+  # A Comment in Google Plus
   class Comment
 
     extend GooglePlus::Resource

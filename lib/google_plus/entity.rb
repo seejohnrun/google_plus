@@ -1,7 +1,9 @@
 module GooglePlus
 
+  # A mixin that allows retrieval of nested attributes
   module Entity
 
+    # Access an attribute of the Entity
     def method_missing(method, *arguments, &block)
       method_s = method.to_s
       if @attributes.has_key?(method_s)
@@ -16,6 +18,7 @@ module GooglePlus
       end
     end
 
+    # Determine if an attribute is set on the Entity
     def respond_to?(method, include_private = false)
       method_s = method.to_s
       if @attributes.has_key?(method_s)
@@ -25,10 +28,12 @@ module GooglePlus
       end
     end
 
+    # The raw accessible attributes
     attr_reader :attributes
 
     private
 
+    # Load the data from the hash into the Entity
     def load_hash(hash)
       # underscore all of the attributes
       @attributes = hash
@@ -40,10 +45,13 @@ module GooglePlus
 
   end
 
+  # A convenience class for wrapping nestings of Entity objects so that
+  # they can be traversed as deeply as desired
   class EntityHash
 
     include Entity
 
+    # Initialize a new EntityHash with the given data
     def initialize(hash = {})
       load_hash(hash)
     end

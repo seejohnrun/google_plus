@@ -3,6 +3,7 @@ require File.dirname(__FILE__) + '/entity'
 
 module GooglePlus
 
+  # A Person in Google Plus
   class Person
 
     extend GooglePlus::Resource

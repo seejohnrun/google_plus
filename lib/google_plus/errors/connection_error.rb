@@ -1,5 +1,6 @@
 module GooglePlus
 
+  # A wrapper for errors encountered during connection, ie: SocketError
   class ConnectionError < Exception
 
     # Initialize a new ConnectionError
