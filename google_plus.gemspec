@@ -7,6 +7,7 @@ spec = Gem::Specification.new do |s|
   s.email = 'john.crepezzi@gmail.com'
   s.add_development_dependency 'rspec', '~> 2.6.0'
   s.add_dependency 'rest-client', '~> 1.6.1'
+  s.add_dependency 'json'
   s.files = Dir['lib/**/*.rb'] + ['README.md']
   s.has_rdoc = true
   s.homepage = 'http://github.com/seejohnrun/google_plus'
