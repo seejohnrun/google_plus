@@ -1,5 +1,3 @@
-require 'json'
-
 module GooglePlus
 
   # An error class for wrapping errors made during requests, and making its attributes

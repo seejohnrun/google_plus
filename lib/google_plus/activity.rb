@@ -1,5 +1,3 @@
-require 'json'
-
 module GooglePlus
 
   # An Acitity in Google Plus

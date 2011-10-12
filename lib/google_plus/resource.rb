@@ -1,5 +1,3 @@
-require 'restclient'
-
 module GooglePlus
 
   # A modular extension for classes that make requests to the

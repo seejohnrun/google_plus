@@ -1,5 +1,3 @@
-require 'json'
-
 module GooglePlus
 
   # A Comment in Google Plus

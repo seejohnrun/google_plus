@@ -1,3 +1,6 @@
+require 'restclient'
+require 'json'
+
 # GooglePlus is a ruby library for accessing the Google Plus API
 module GooglePlus
 
