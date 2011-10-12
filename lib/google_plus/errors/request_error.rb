@@ -1,5 +1,5 @@
 require 'json'
-require File.dirname(__FILE__) + '/../entity'
+require 'google_plus/entity'
 
 module GooglePlus
 

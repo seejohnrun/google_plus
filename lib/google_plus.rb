@@ -1,13 +1,13 @@
 require 'bundler/setup'
-require File.dirname(__FILE__) + '/google_plus/resource'
-require File.dirname(__FILE__) + '/google_plus/cursor'
+require 'google_plus/resource'
+require 'google_plus/cursor'
 
 # GooglePlus is a ruby library for accessing the Google Plus API
 module GooglePlus
 
-  autoload :Activity, File.dirname(__FILE__) + '/google_plus/activity'
-  autoload :Comment, File.dirname(__FILE__) + '/google_plus/comment'
-  autoload :Person, File.dirname(__FILE__) + '/google_plus/person'
+  autoload :Activity, 'google_plus/activity'
+  autoload :Comment,  'google_plus/comment'
+  autoload :Person,   'google_plus/person'
 
   class << self
     attr_accessor :api_key, :access_token

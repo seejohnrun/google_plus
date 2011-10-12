@@ -1,6 +1,6 @@
 require 'restclient'
-require File.dirname(__FILE__) + '/errors/request_error'
-require File.dirname(__FILE__) + '/errors/connection_error'
+require 'google_plus/errors/request_error'
+require 'google_plus/errors/connection_error'
 
 module GooglePlus
 
