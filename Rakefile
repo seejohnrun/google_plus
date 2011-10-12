@@ -1,6 +1,8 @@
 require 'rspec/core/rake_task'
-require File.dirname(__FILE__) + '/lib/google_plus/version'
- 
+
+$LOAD_PATH.unshift File.dirname(__FILE__) + "/lib"
+require 'google_plus/version'
+
 task :build => :test do
   system "gem build google_plus.gemspec"
 end

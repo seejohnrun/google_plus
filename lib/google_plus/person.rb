@@ -1,6 +1,3 @@
-require 'json'
-require File.dirname(__FILE__) + '/entity'
-
 module GooglePlus
 
   # A Person in Google Plus

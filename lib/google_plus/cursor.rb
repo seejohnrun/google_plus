@@ -1,5 +1,3 @@
-require 'json'
-
 module GooglePlus
 
   # A class for easily paginating through lists of Google Plus

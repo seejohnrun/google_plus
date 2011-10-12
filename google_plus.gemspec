@@ -1,4 +1,5 @@
-require File.dirname(__FILE__) + '/lib/google_plus/version'
+$LOAD_PATH.unshift File.dirname(__FILE__) + "/lib"
+require 'google_plus/version'
 
 spec = Gem::Specification.new do |s|
   s.name = 'google_plus'
