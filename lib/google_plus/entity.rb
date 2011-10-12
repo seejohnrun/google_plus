@@ -3,6 +3,12 @@ module GooglePlus
   # A mixin that allows retrieval of nested attributes
   module Entity
 
+    def self.included(base)
+      base.instance_eval do
+        undef_method :id if method_defined? :id
+      end
+    end
+
     # Access an attribute of the Entity
     def method_missing(method, *arguments, &block)
       method_s = method.to_s
