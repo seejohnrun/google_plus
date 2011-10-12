@@ -1,3 +1,4 @@
+require 'bundler/setup'
 require 'google_plus'
 
 unless TEST_API_KEY = ENV['API_KEY']

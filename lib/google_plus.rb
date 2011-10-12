@@ -1,4 +1,3 @@
-require 'bundler/setup'
 require 'google_plus/resource'
 require 'google_plus/cursor'
 
