@@ -1,5 +1,4 @@
 require 'json'
-require 'google_plus/entity'
 
 module GooglePlus
 

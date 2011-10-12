@@ -1,12 +1,15 @@
-require 'google_plus/resource'
-require 'google_plus/cursor'
-
 # GooglePlus is a ruby library for accessing the Google Plus API
 module GooglePlus
 
-  autoload :Activity, 'google_plus/activity'
-  autoload :Comment,  'google_plus/comment'
-  autoload :Person,   'google_plus/person'
+  autoload :Activity,         'google_plus/activity'
+  autoload :Comment,          'google_plus/comment'
+  autoload :Cursor,           'google_plus/cursor'
+  autoload :Entity,           'google_plus/entity'
+  autoload :Person,           'google_plus/person'
+  autoload :Resource,         'google_plus/resource'
+
+  autoload :ConnectionError,  'google_plus/errors/connection_error'
+  autoload :RequestError,     'google_plus/errors/request_error'
 
   class << self
     attr_accessor :api_key, :access_token

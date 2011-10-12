@@ -1,6 +1,4 @@
 require 'restclient'
-require 'google_plus/errors/request_error'
-require 'google_plus/errors/connection_error'
 
 module GooglePlus
 
