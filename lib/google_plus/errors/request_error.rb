@@ -1,6 +1,3 @@
-require 'json'
-require File.dirname(__FILE__) + '/../entity'
-
 module GooglePlus
 
   # An error class for wrapping errors made during requests, and making its attributes

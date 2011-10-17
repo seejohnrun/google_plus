@@ -1,4 +1,3 @@
-rvm: 1.9.2
 script: "API_KEY=AIzaSyA4f0ZA5VFCFG8vCJwyBI2T9wOSYFhiEe8 rspec spec"
 notifications:
   email:
