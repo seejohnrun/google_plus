@@ -56,12 +56,12 @@ And once you have an activity, you can move back to its person using `#person`.
 
 ### People do Things
 
-Lastly, you can get a list of activities for a person, which is returned as a `GooglePlus::Cursor`.  You use it like:
+Lastly, you can get a list of activities for a person, which is returned as a `GooglePlus::Cursor`.  You use it like (which auto-paginates):
 
     person = GooglePlus::Person.new(123)
     cursor = person.list_activities
-    while cursor.next_page
-      cursor.items.count # a batch of activities
+		cursor.each do |item|
+		  item # an item
     end
 
 Or if you just want one page, you can have it:
@@ -74,7 +74,7 @@ You can also set the cursor size at any time using any of these variations:
     # on the cursor
     cursor = person.activities_list(:max_results => 10)
     # or on the page
-    cursor.next_page(:max_results => 5)
+    items = cursor.next_page(:max_results => 5)
 
 ### Plusoners and Resharers
 
@@ -92,8 +92,8 @@ Getting comments for an activity is done just like getting activities for a pers
 
     activity = GooglePlus::Activity.get(123)
     cursor = activity.list_comments
-    while cursor.next_page
-      cursor.items.count # a bunch of comments
+		cursor.each do |item|
+			# a comment
     end
 
 ## Searching
@@ -101,10 +101,8 @@ Getting comments for an activity is done just like getting activities for a pers
 You can search for [people](https://developers.google.com/+/api/latest/people/search) or [activities](https://developers.google.com/+/api/latest/activities/search) using the respective `search` methods, which also yield `GooglePlus::Cursor` objects.  Here's an example:
 
     search = GooglePlus::Person.search('john crepezzi')
-    while search.next_page
-      search.each do |p|
-        puts p.display_name
-      end
+    search.each do |p|
+			puts p.display_name
     end
 
 ## Setting options

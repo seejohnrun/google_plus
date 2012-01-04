@@ -6,6 +6,19 @@ module GooglePlus
 
     extend GooglePlus::Resource
 
+    # Go through each item
+    # @yieldparam [GooglePlus::Entity] an individual item
+    # @yieldreturn [GooglePlus::Cursor] self
+    def each
+      while items = next_page
+        break if items.empty?
+        items.each do |item|
+          yield item
+        end
+      end
+      self
+    end
+
     # Get the current page of results
     # @return [Array] the current page of results, or nil if the page is blank
     def items(params = {})
@@ -51,7 +64,8 @@ module GooglePlus
           data = JSON::parse(json)
           @next_page_token = data['nextPageToken']
           if items = data['items']
-            return data['items'].map { |d| @resource_klass.send(:new, d) }
+            return nil if items.empty?
+            return items.map { |d| @resource_klass.send(:new, d) }
           end
         end
       end
