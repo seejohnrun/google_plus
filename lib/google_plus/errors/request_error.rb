@@ -11,6 +11,7 @@ module GooglePlus
     # @param [Exception] e The original exception
     def initialize(e)
       load_hash JSON.parse(e.response.body)
+      super(error.message)
     end
 
   end
