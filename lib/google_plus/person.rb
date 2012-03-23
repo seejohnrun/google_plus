@@ -23,7 +23,7 @@ module GooglePlus
     # @option params [Symbol] :user_ip The IP of the user on who's behalf this request is made
     # @return [GooglePlus::Cursor] a cursor for the people found in the search
     def self.search(query, params = {})
-      params[:query] = URI.escape(query)
+      params[:query] = query
       resource = 'people'
       GooglePlus::Cursor.new(self, :get, resource, params)
     end
