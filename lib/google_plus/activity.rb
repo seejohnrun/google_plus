@@ -24,7 +24,7 @@ module GooglePlus
     # @return [GooglePlus::Cursor] a cursor that will paginate through the results
     #   for the activity search
     def self.search(query, params = {})
-      params[:query] = URI.escape(query)
+      params[:query] = query
       params[:orderBy] = params.delete(:order_by) if params.has_key?(:order_by)
       resource = 'activities'
       GooglePlus::Cursor.new(self, :get, resource, params)
