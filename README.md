@@ -58,8 +58,8 @@ Lastly, you can get a list of activities for a person, which is returned as a `G
 
     person = GooglePlus::Person.new(123)
     cursor = person.list_activities
-		cursor.each do |item|
-		  item # an item
+    cursor.each do |item|
+      item # an item
     end
 
 Or if you just want one page, you can have it:
@@ -90,8 +90,8 @@ Getting comments for an activity is done just like getting activities for a pers
 
     activity = GooglePlus::Activity.get(123)
     cursor = activity.list_comments
-		cursor.each do |item|
-			# a comment
+    cursor.each do |item|
+      # a comment
     end
 
 ## Searching
@@ -100,7 +100,7 @@ You can search for [people](https://developers.google.com/+/api/latest/people/se
 
     search = GooglePlus::Person.search('john crepezzi')
     search.each do |p|
-			puts p.display_name
+      puts p.display_name
     end
 
 ## Setting options
