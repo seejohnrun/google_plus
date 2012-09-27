@@ -30,8 +30,8 @@ module GooglePlus
 
     # List the activities for this person
     # @return [GooglePlus::Cursor] a cursor of activities for this person
-    def list_activities
-      GooglePlus::Activity.for_person(id)
+    def list_activities(params = {})
+      GooglePlus::Activity.for_person(id, params)
     end
 
     # Load a new instance from an attributes hash
