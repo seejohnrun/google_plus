@@ -65,12 +65,12 @@ Lastly, you can get a list of activities for a person, which is returned as a `G
 Or if you just want one page, you can have it:
 
     person = GooglePlus::Person.new(123)
-    activites = person.activities_list.items
+    activites = person.list_activities.items
 
 You can also set the cursor size at any time using any of these variations:
 
     # on the cursor
-    cursor = person.activities_list(:max_results => 10)
+    cursor = person.list_activities(:max_results => 10)
     # or on the page
     items = cursor.next_page(:max_results => 5)
 
