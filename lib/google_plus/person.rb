@@ -16,6 +16,12 @@ module GooglePlus
       data = make_request(:get, "people/#{user_id}", params)
       Person.new(JSON.parse(data)) if data
     end
+    #Get a list of people who are visible to the app
+    
+    def self.list(user_id,params = {})
+      data = make_request(:get, "people/#{user_id}/people/visible",params)
+      Person.new(JSON.parse(data)) if data
+      
 
     # Search for a person
     # @param [String] query The query string to search for
