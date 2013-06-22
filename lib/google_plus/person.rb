@@ -16,6 +16,21 @@ module GooglePlus
       data = make_request(:get, "people/#{user_id}", params)
       Person.new(JSON.parse(data)) if data
     end
+    
+    # Get list of people that are in user's circle 
+    #collection parameter takes value as visible 
+    # @param [String] user_id the id of the user to look up
+    # @option params [Symbol] :maxResults to limit the number of users
+    # @option params [Symbol] :orderBy to order by 'alpahbetical'(order by name) or 'best'(order by relevence)
+    # @option params [Symbol] :key A different API key to use for this request
+    # @option params [Symbol] :user_ip The IP of the user on who's behalf this request is made
+    # @return [GooglePlus::Person] a user list object representing the the entire circle of the user we're looking up,
+    #   if it is found - otherwise, return nil
+    
+    def self.list(user_id, collection ,params = {})
+      data = make_request(:get , "people/#{user_id}/people/#{collection}", params)
+      Person.new(JSON.parse(data)) if data
+    end
 
     # Search for a person
     # @param [String] query The query string to search for
