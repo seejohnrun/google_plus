@@ -25,7 +25,7 @@ module GooglePlus
         raise GooglePlus::RequestError.new(e)
       rescue SocketError => e
         raise GooglePlus::ConnectionError.new(e)
-      rescue RestClient::ResourceNotFound
+      rescue RestClient::ResourceNotFound, RestClient::RequestURITooLong
         nil
       end
     end
