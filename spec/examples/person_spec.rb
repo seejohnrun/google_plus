@@ -16,6 +16,26 @@ describe GooglePlus::Person do
 
   end
 
+  describe :list do
+
+    before :each do
+      GooglePlus::api_key = TEST_API_KEY
+    end
+
+    it 'should be able to list people with default collection' do
+      cursor = GooglePlus::Person.list 'me'
+      cursor.items.should_not be_empty
+      cursor.items.each { |c| c.should be_a(GooglePlus::Person) }
+    end
+
+    it 'should be able to list people with speific collection' do
+      cursor = GooglePlus::Person.list 'me', 'visible'
+      cursor.items.should_not be_empty
+      cursor.items.each { |c| c.should be_a(GooglePlus::Person) }
+    end
+
+  end
+
   describe :get do
 
     describe 'when authenticated' do

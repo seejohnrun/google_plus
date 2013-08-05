@@ -17,6 +17,18 @@ module GooglePlus
       Person.new(JSON.parse(data)) if data
     end
 
+    # Get a list of people for a collection
+    # @params [String] user_id the id of the user to look up
+    # @params [String] collection to retrieve ('visible' only currently)
+    # @option params [Symbol] :key A different API key to use for this request
+    # @option params [Symbol] :user_ip The IP of the user on who's behalf this request is made
+    # @return [GooglePlus::Cursor] a cursor for the people found
+    def self.list(user_id = 'me', collection = 'visible', params = {})
+      path_segments = ['people', user_id, 'people', collection]
+      path = path_segments.map { |ps| URI.escape(ps) }.join('/')
+      GooglePlus::Cursor.new(self, :get, path, params)
+    end
+
     # Search for a person
     # @param [String] query The query string to search for
     # @option params [Symbol] :key A different API key to use for this request
@@ -32,6 +44,12 @@ module GooglePlus
     # @return [GooglePlus::Cursor] a cursor of activities for this person
     def list_activities(params = {})
       GooglePlus::Activity.for_person(id, params)
+    end
+
+    # List visible people for the user
+    # @return [GooglePlus::Cursor] cursor of people
+    def list_visible_people(params = {})
+      GooglePlus::Person.list('me', 'visible', params)
     end
 
     # Load a new instance from an attributes hash
