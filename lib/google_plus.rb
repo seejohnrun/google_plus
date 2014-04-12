@@ -5,6 +5,7 @@ require 'json'
 module GooglePlus
 
   autoload :Activity,         'google_plus/activity'
+  autoload :AccessToken,      'google_plus/access_token'
   autoload :Comment,          'google_plus/comment'
   autoload :Cursor,           'google_plus/cursor'
   autoload :Entity,           'google_plus/entity'
