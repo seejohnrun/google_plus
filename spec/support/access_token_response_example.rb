@@ -5,3 +5,7 @@ def access_token_response
     "token_type" => "Bearer"
   }
 end
+
+def access_token_json_response
+  access_token_response.to_json
+end
