@@ -10,7 +10,7 @@ module GooglePlus
     # @yieldparam [GooglePlus::Entity] an individual item
     # @yieldreturn [GooglePlus::Cursor] self
     def each
-      while items = next_page
+      while items = next_page({:max_results => 100})
         break if items.empty?
         items.each do |item|
           yield item
