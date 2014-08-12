@@ -56,7 +56,7 @@ And once you have an activity, you can move back to its person using `#person`.
 
 Lastly, you can get a list of activities for a person, which is returned as a `GooglePlus::Cursor`.  You use it like (which auto-paginates):
 
-    person = GooglePlus::Person.new(123)
+    person = GooglePlus::Person.get(123)
     cursor = person.list_activities
     cursor.each do |item|
       item # an item
@@ -64,7 +64,7 @@ Lastly, you can get a list of activities for a person, which is returned as a `G
 
 Or if you just want one page, you can have it:
 
-    person = GooglePlus::Person.new(123)
+    person = GooglePlus::Person.get(123)
     activites = person.list_activities.items
 
 You can also set the cursor size at any time using any of these variations:
