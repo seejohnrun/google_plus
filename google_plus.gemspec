@@ -6,7 +6,7 @@ spec = Gem::Specification.new do |s|
   s.author = 'John Crepezzi'
   s.description = 'Google+ Ruby Gem'
   s.email = 'john.crepezzi@gmail.com'
-  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'rspec', '< 3'
   s.add_dependency 'rest-client', '>= 1.6.1', '< 2'
   s.add_dependency 'json'
   s.files = Dir['lib/**/*.rb'] + ['README.md']
